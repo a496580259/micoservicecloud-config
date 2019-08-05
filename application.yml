@@ -1,0 +1,16 @@
+﻿spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles:
+    active: dev #开发环境
+  application:
+    name: micoservicecloud-config-dev
+---
+spring:
+  profiles:
+    active: test #开发环境
+  application:
+    name: micoservicecloud-config-test
+#请保存为UTF-8格式
