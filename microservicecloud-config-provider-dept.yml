@@ -1,13 +1,4 @@
-﻿#spring:
-#  cloud:
-#    config:
-#      name: microservicecloud-config-provider-dept #git仓库中的文件名，去掉后缀
-#      profile: dev #使用什么环境
-#      label: master #配置文件所处分支
-#      uri: http://config-3344.com:3344 #配置指向config 服务端的地址
-
-
-spring:
+﻿spring:
   profiles:
     active: dev
 ---
@@ -51,12 +42,6 @@ mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   type-aliases-package: com.swj.springCloud.entity
 
-info:
-  app.name: microservicecloud-dept
-  introduction: 用于提供部门的微服务-provider
-  build.groupId: @project.groupId@   #使用@@符号可以获取pom.xml配置文件中对应的内容
-  build.artifactId: @project.artifactId@
-  build.version: @project.version@
 
 
 ---
@@ -100,9 +85,3 @@ mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   type-aliases-package: com.swj.springCloud.entity
 
-info:
-  app.name: microservicecloud-dept
-  introduction: 用于提供部门的微服务-provider
-  build.groupId: @project.groupId@   #使用@@符号可以获取pom.xml配置文件中对应的内容
-  build.artifactId: @project.artifactId@
-  build.version: @project.version@
