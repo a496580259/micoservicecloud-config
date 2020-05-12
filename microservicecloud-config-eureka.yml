@@ -1,0 +1,39 @@
+﻿spring:
+  profiles:
+    active: dev
+  application:
+    name: microservicecloud-config-eureka-7001
+
+---
+
+spring:
+  profiles: dev
+
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+
+  client:
+    register-with-eureka: false #false表示不向注册中心注册自己
+    fetch-registry: false  #false表示不向注册中心获取服务，因为它自己就是注册中心
+    service-url: http://eureka7001.com:7001/eureka
+
+
+---
+spring:
+  profiles: test
+
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com
+
+  client:
+    register-with-eureka: false #false表示不向注册中心注册自己
+    fetch-registry: false  #false表示不向注册中心获取服务，因为它自己就是注册中心
+    service-url: http://eureka7001.com:7001/eureka
