@@ -1,12 +1,22 @@
-﻿spring:
+﻿#spring:
+#  cloud:
+#    config:
+#      name: microservicecloud-config-provider-dept #git仓库中的文件名，去掉后缀
+#      profile: dev #使用什么环境
+#      label: master #配置文件所处分支
+#      uri: http://config-3344.com:3344 #配置指向config 服务端的地址
+
+
+spring:
   profiles:
     active: dev
 ---
+
 #配置数据源
 spring:
+  profiles: dev
   application:
     name: microservicecloud-dept
-  profiles: dev
   datasource:
     username: root
     password: 123456
@@ -14,6 +24,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
+
 #    dbcp2:
 #      min-idle: 5                                           # 数据库连接池的最小维持连接数
 #      initial-size: 5                                       # 初始化连接数
@@ -49,17 +60,19 @@ info:
 
 
 ---
+
 #配置数据源
 spring:
+  profiles: test
   application:
     name: microservicecloud-dept
-  profiles: test
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/clouddb02?serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+
 
 #    dbcp2:
 #      min-idle: 5                                           # 数据库连接池的最小维持连接数
@@ -93,14 +106,3 @@ info:
   build.groupId: @project.groupId@   #使用@@符号可以获取pom.xml配置文件中对应的内容
   build.artifactId: @project.artifactId@
   build.version: @project.version@
-
-
-
-
-
-
-
-
-
-
-
