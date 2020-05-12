@@ -1,8 +1,24 @@
 ﻿spring:
-  application:
-    name: microservicecloud-dept
   profiles:
     active: dev
+---
+#配置数据源
+spring:
+  application:
+    name: microservicecloud-dept
+  profiles: dev
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/clouddb01?serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#    dbcp2:
+#      min-idle: 5                                           # 数据库连接池的最小维持连接数
+#      initial-size: 5                                       # 初始化连接数
+#      max-total: 5                                          # 最大连接数
+#      max-wait-millis: 200                                  #
 server:
   port: 8001
 
@@ -31,27 +47,12 @@ info:
   build.artifactId: @project.artifactId@
   build.version: @project.version@
 
----
-#配置数据源
-spring:
-  profiles: dev
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/clouddb01?serverTimezone=GMT
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
-
-#    dbcp2:
-#      min-idle: 5                                           # 数据库连接池的最小维持连接数
-#      initial-size: 5                                       # 初始化连接数
-#      max-total: 5                                          # 最大连接数
-#      max-wait-millis: 200                                  #
-
 
 ---
 #配置数据源
 spring:
+  application:
+    name: microservicecloud-dept
   profiles: test
   datasource:
     username: root
@@ -65,6 +66,33 @@ spring:
 #      initial-size: 5                                       # 初始化连接数
 #      max-total: 5                                          # 最大连接数
 #      max-wait-millis: 200                                  #
+server:
+  port: 8001
+
+
+#将当前服务注册进eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+    fetch-registry: false #不向注册中心获取服务，因为自己就是服务的提供者
+    register-with-eureka: true  #表示将自己注册进注册中心
+  instance:
+    instance-id: microservicecloud-dept:8001   #给这个微服务重新取一个别名（原来名字：DESKTOP-VVJR9LU:microservicecloud-dept:8001）
+    prefer-ip-address: true   #显示访问路径ip
+
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/*Mapper.xml
+  type-aliases-package: com.swj.springCloud.entity
+
+info:
+  app.name: microservicecloud-dept
+  introduction: 用于提供部门的微服务-provider
+  build.groupId: @project.groupId@   #使用@@符号可以获取pom.xml配置文件中对应的内容
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
 
 
 
