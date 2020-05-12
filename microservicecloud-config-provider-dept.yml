@@ -52,7 +52,7 @@ spring:
 ---
 #配置数据源
 spring:
-  profiles: dev
+  profiles: test
   datasource:
     username: root
     password: 123456
