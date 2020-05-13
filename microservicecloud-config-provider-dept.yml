@@ -6,7 +6,7 @@
 
 #配置数据源
 spring:
-  profiles: test
+  profiles: dev
   application:
     name: microservicecloud-dept
   datasource:
@@ -49,13 +49,13 @@ mybatis:
 
 #配置数据源
 spring:
-  profiles: dev
+  profiles: test
   application:
     name: microservicecloud-dept
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/clouddb03?serverTimezone=GMT
+    url: jdbc:mysql://localhost:3306/clouddb02?serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
