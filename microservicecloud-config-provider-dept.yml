@@ -6,7 +6,7 @@
 
 #配置数据源
 spring:
-  profiles: dev
+  profiles: test
   application:
     name: microservicecloud-dept
   datasource:
@@ -49,7 +49,7 @@ mybatis:
 
 #配置数据源
 spring:
-  profiles: test
+  profiles: dev
   application:
     name: microservicecloud-dept
   datasource:
